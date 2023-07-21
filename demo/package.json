@@ -9,7 +9,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "cleanUp": "rm -rf {platforms,plugins} & npm i",
+    "build:android": "ionic cordova build android",
+    "build:android:livereload": "ionic cordova run android --verbose --livereload --host=192.168.1.12",
+    "build:ios": "ionic cordova emulate ios"
   },
   "private": true,
   "dependencies": {
@@ -23,8 +27,8 @@
     "@awesome-cordova-plugins/core": "^5.45.0",
     "@awesome-cordova-plugins/file": "^5.45.0",
     "@awesome-cordova-plugins/image-picker": "^5.45.0",
+    "@awesome-cordova-plugins/ionic-webview": "^5.45.0",
     "@ionic/angular": "^6.2.5",
-    "cordova-ios": "6.2.0",
     "rxjs": "~7.5.6",
     "tslib": "^2.4.0",
     "zone.js": "~0.11.8"
@@ -41,15 +45,16 @@
     "@angular/language-service": "~14.2.2",
     "@ionic/angular-toolkit": "^7.0.0",
     "@ionic/cordova-builders": "^7.0.0",
-    "@spoonconsulting/cordova-plugin-background-upload": "git+https://github.com/spoonconsulting/cordova-plugin-background-upload.git#master",
+    "@spoonconsulting/cordova-plugin-background-upload": "github:MaximBelov/cordova-plugin-background-upload#4.0.11-custom",
     "@spoonconsulting/cordova-plugin-telerik-imagepicker": "^2.0.1",
     "@types/node": "^12.11.1",
     "@typescript-eslint/eslint-plugin": "5.37.0",
     "@typescript-eslint/parser": "5.37.0",
     "ajv": "8.8.2",
-    "cordova-android": "^11.0.0",
+    "cordova-android": "^12.0.0",
+    "cordova-ios": "7.0.0",
     "cordova-plugin-device": "2.1.0",
-    "cordova-plugin-file": "^6.0.2",
+    "cordova-plugin-file": "8.0.0",
     "cordova-plugin-ionic-keyboard": "^2.2.0",
     "cordova-plugin-ionic-webview": "^5.0.0",
     "cordova-plugin-statusbar": "3.0.0",
@@ -74,7 +79,9 @@
       "cordova-plugin-file": {
         "ANDROIDX_WEBKIT_VERSION": "1.4.0"
       },
-      "@spoonconsulting/cordova-plugin-telerik-imagepicker": {},
+      "@spoonconsulting/cordova-plugin-telerik-imagepicker": {
+        "PHOTO_LIBRARY_USAGE_DESCRIPTION": " "
+      },
       "@spoonconsulting/cordova-plugin-background-upload": {}
     },
     "platforms": [

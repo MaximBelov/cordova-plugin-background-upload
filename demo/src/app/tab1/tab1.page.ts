@@ -3,6 +3,7 @@ import { AlertController, Platform } from '@ionic/angular';
 import { ImagePicker } from '@awesome-cordova-plugins/image-picker/ngx';
 import { File } from '@awesome-cordova-plugins/file/ngx';
 import { FileTransferManager, BackgroundUpload } from '@awesome-cordova-plugins/background-upload/ngx';
+import { WebView } from '@awesome-cordova-plugins/ionic-webview/ngx';
 
 const TEST_UPLOAD_URL = 'https://api.2ip.me/api-speedtest/en/dev.null';
 const ID_OFFSET = 100;
@@ -28,7 +29,9 @@ export class Tab1Page {
     private alertController: AlertController,
     private imagePicker: ImagePicker,
     private file: File,
-    private backgroundUpload: BackgroundUpload
+    private backgroundUpload: BackgroundUpload,
+    private webView: WebView
+
   ) {
     this.platform.ready().then(() => {
 
@@ -67,7 +70,7 @@ export class Tab1Page {
         const pathSplit = uri.split('/');
         const filename = pathSplit.pop();
         const dir = 'file://' + pathSplit.join('/');
-        return this.file.readAsDataURL(dir, filename);
+        return this.webView.convertFileSrc(uri)
       }));
 
       data.forEach((d, i) => {
