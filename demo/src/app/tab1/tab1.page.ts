@@ -12,7 +12,7 @@ const ID_OFFSET = 100;
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss'],
-  providers: [ImagePicker, File, BackgroundUpload],
+  providers: [ImagePicker, File, BackgroundUpload, WebView],
 })
 export class Tab1Page {
   uploader: FileTransferManager;
